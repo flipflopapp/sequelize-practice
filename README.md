@@ -5,3 +5,13 @@ This repo houses code for the blog ["Getting Started with Node, Express and Post
 Code for various sections is separated into branches, so if you're working through the tutorial and you get stuck, you can always checkout the corresponding branch and refer.
 
 Have fun! 😄
+
+# Development mode postgres setup
+
+Instructions to setup postgres locally.
+
+PGDATA=<PATH>
+initdb
+pg_ctl -D /Users/navalsaini/chiffer/data -l logfile start
+createuser --interactive waiyaki
+createdb todos-dev
