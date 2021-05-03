@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'todoId',
       as: 'todoItems',
     });
+    Todo.belongsTo(models.Project, {
+      foreignKey: 'projectId',
+      onDelete: 'CASCADE',
+    });
   };
   return Todo;
 };
