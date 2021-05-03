@@ -1,17 +1,33 @@
 const TodoItem = require('../models').TodoItem;
+const User = require('../models').User;
 
 module.exports = {
-  create(req, res) {
-    return TodoItem
+  async create(req, res) {
+    let assignedTo;
+    if (req.body.username) {
+      const user = await User.find({
+        where: {
+          email: req.body.username
+        },
+      });
+      if (!user) {
+        return res.status(400).send('username not found')
+      }
+      assignedTo = user.id;
+    }
+
+    return await TodoItem
       .create({
         content: req.body.content,
         todoId: req.params.todoId,
+        assignedTo,
       })
       .then(todoItem => res.status(201).send(todoItem))
       .catch(error => res.status(400).send(error));
   },
 
   update(req, res) {
+    // TODO update username (or task assigned to user)
     return TodoItem
       .find({
         where: {
