@@ -6,12 +6,18 @@ Code for various sections is separated into branches, so if you're working throu
 
 Have fun! 😄
 
+# Project DB schema
+
+![db schema](https://github.com/flipflopapp/sequelize-practice/blob/main/docs/db-schema_design.png)
+
 # Development mode postgres setup
 
 Instructions to setup postgres locally.
 
+```
 PGDATA=<PATH>
 initdb
 pg_ctl -D /Users/navalsaini/chiffer/data -l logfile start
 createuser --interactive waiyaki
 createdb todos-dev
+```
