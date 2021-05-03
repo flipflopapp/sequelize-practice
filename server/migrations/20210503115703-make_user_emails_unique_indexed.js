@@ -8,14 +8,8 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-     await queryInterface.addColumn('TodoItems', 'assignedTo', Sequelize.INTEGER, {
-      allowNull: false,
-      onDelete: 'CASCADE',
-      references: {
-        model: 'Users',
-        key: 'id',
-        as: 'assignedTo',
-      },
+     await queryInterface.addIndex('Users', ['email'], {
+      unique: true,
      });
   },
 
@@ -26,6 +20,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-     await queryInterface.dropColumn('TodoItems', 'assignedTo');
+     await queryInterface.removeIndex('Users', ['email']);
   }
 };
